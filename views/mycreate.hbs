@@ -1,0 +1,92 @@
+<div class="container" style="margin-top: 3%;">
+    <div class="row">
+        <div class="col-md-12">
+            {{!-- 顯示 flash 訊息 --}}
+            {{> message }}
+        </div>
+        <div class="col-md-3">
+            <label style="font-size: 20px; display: flex; align-items: center">
+                <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+                    <path d="M44 8H4V38H19L24 43L29 38H44V8Z" fill="none" stroke="#333" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M12 19V27" stroke="#333" stroke-width="3" stroke-linecap="round" />
+                    <path d="M20 16V30" stroke="#333" stroke-width="3" stroke-linecap="round" />
+                    <path d="M28 21V25" stroke="#333" stroke-width="3" stroke-linecap="round" />
+                    <path d="M36 19V27" stroke="#333" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                &nbsp;會議列表
+            </label>
+        </div>
+        <div class="col-md-7">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">參與</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/chair">主持</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link per-active" href="/mycreate">創建</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-2 text-right">
+            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#NewMeetingModal">&#10010;
+                舉辦會議
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div style="margin-bottom :7%">
+        <div class="form-group">
+            <label for="exampleInputEmail1">快速搜尋</label>
+            <input type="text" class="form-control" id="myInput" aria-describedby="emailHelp" placeholder="輸入資料進行搜尋">
+            <div class="form-group form-check">
+            <div class="float-right d-inline-block my-1">
+                <input type="checkbox" onclick="setTodayFunc()" class="form-check-input" id="setTodayCb">
+                <label class="form-check-label" for="setTodayCb">只顯示今天</label>
+            </div>
+        </div>
+        </div>
+        <div style="text-align: center" class="mt-2">
+            <table class="table conf-table" id="myTable">
+                <thead>
+                    <tr>
+                        <th scope="col" onclick="sortTable(0)">會議名稱</th>
+                        <th scope="col" onclick="sortTable(1)">開始時間</th>
+                        <th scope="col" onclick="sortTable(2)">結束時間</th>
+                        <th scope="col" onclick="sortTable(3)">地點</th>
+                        <th scope="col" onclick="sortTable(4)">主持人審核</th>
+                        <th scope="col" onclick="sortTable(5)">場地審核</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle"id="myInfoTable">
+                    {{!-- 遍歷主持的會議陣列 --}}
+                    {{#each confsData}}
+                    <tr class="align-middle" onclick="tableClick('{{this.confData._id}}')">
+                        <td>{{this.confData.name}}</td>
+                        <td>{{this.confData.startTime}}</td>
+                        <td>{{this.confData.endTime}}</td>
+                        <td>{{this.confRoomData.name}}</td>
+
+                        <td>{{{getSign this.confData.isChairSign}}}</td>
+                        <td>{{{getSign this.confData.isRoomSign}}}</td>
+                        {{!-- <td><span class="badge badge-danger">已簽核</span></td> --}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{!-- 判斷有無主持的會議 --}}
+            {{#if confsData}}
+            {{else}}
+            {{!-- 沒有會議 --}}
+            尚無會議
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+{{>newConfModal}}

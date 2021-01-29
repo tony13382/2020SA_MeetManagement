@@ -1,0 +1,236 @@
+.title {
+	padding-top: 5%;
+	padding-bottom: 1%;
+	font-weight: bold;
+	font-size: 35px;
+}
+
+.add {
+	background: #004C93;
+	color: white;
+	font-size: 18px;
+}
+
+.add:hover {
+	background: #0275D8;
+}
+
+
+.breadcrumb {
+	color: #767676;
+	background: #F7F7F7;
+	font-size: 14px;
+}
+
+.bread {
+	font-size: 15px;
+	color: #0275D8;
+}
+
+.bread:hover {
+	color: #767676;
+}
+
+.btn-danger {
+	background: #BD2716;
+	border-color: #BD2716;
+}
+
+body {
+	font-family: Microsoft JhengHei;
+}
+
+nav {
+	background: #ECECEC;
+}
+
+nav a {
+	color: #000000;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+nav a:hover {
+	color: #004C93;
+}
+
+.walsin {
+	color: #BD2716;
+	font-weight: bolder;
+	font-size: 28px;
+}
+
+.management {
+	color: #BD2716;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.icon {
+	width: 30px;
+	margin: 1% 2%;
+}
+
+.title {
+	padding-top: 5%;
+	padding-bottom: 1%;
+	font-weight: bold;
+	font-size: 35px;
+}
+
+.join {
+	padding-top: 6%;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.active {
+	color: black;
+}
+
+.add {
+	background: #004C93;
+	color: white;
+	font-size: 18px;
+}
+
+.add:hover {
+	background: #0275D8;
+}
+
+.export {
+	width: 20px;
+	margin: 20% 0% 0% 20%;
+}
+
+.meetinglink {
+	color: black;
+}
+
+.meetinglink:hover {
+	color: #7D7D7D;
+	font-weight: bold;
+}
+
+.badge-warning {
+	background: #FF9500;
+	color: white;
+}
+
+.btn-primary {
+	background: #BD2716;
+	border-color: #BD2716;
+}
+
+.btn-danger {
+	background: #BD2716;
+	border-color: #BD2716;
+}
+
+.Meetingstatus {
+	padding: 2%;
+	color: #004C93;
+	font-weight: bold;
+}
+
+
+.breadcrumb {
+	color: #767676;
+	background: #F7F7F7;
+	font-size: 14px;
+}
+
+.bread {
+	font-size: 15px;
+	color: #0275D8;
+}
+
+.bread:hover {
+	color: #767676;
+}
+
+.btn-danger {
+	background: #BD2716;
+	border-color: #BD2716;
+}
+
+.submit {
+	background: #BD2716;
+	border-color: #BD2716;
+}
+
+.Meetingstatus {
+	padding: 2%;
+	color: #004C93;
+	font-weight: bold;
+}
+
+.peoplelist {
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.people {
+	margin-top: 5%;
+}
+
+.badge-warning {
+	background: #FF9500;
+	color: white;
+}
+
+body {
+	font-family: Microsoft JhengHei;
+}
+
+.login {
+	background: #F2F2F2;
+	padding-top: 5%;
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-bottom: 5%;
+	border-radius: 3%;
+}
+
+.walsin {
+	color: #BD2716;
+	font-weight: bolder;
+	font-size: 36px;
+}
+
+.management {
+	color: #BD2716;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.remind {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.form-group {
+	font-weight: bold;
+}
+
+.remind2 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #BD2716;
+}
+
+.logo {
+	background: rgba(242, 242, 242, 0.2);
+	border-radius: 1%;
+}
+
+.walsinlogo {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: url(../images/walsin.png) no-repeat center center;
+	background-size: 350px;
+	z-index: 99;
+}

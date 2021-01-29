@@ -1,0 +1,182 @@
+<script type="text/javascript">
+    var infoBox; // 訊息 label
+    var textBox; // 最終的收音轉換訊息 text input
+    var tempBox; // 中間的收音轉換訊息 text input
+    var startStopButton; // 「收音轉換/停止」按鈕
+    var final_transcript = ''; // 最終的收音轉換訊息的變數
+    var recognizing = false; // 是否收音轉換中
+
+    function startButton(event) {
+        infoBox = document.getElementById("infoBox"); // 取得訊息控制項 infoBox
+        textBox = document.getElementById("textBox"); // 取得最終的收音轉換訊息控制項 textBox
+        tempBox = document.getElementById("tempBox"); // 取得中間的收音轉換訊息控制項 tempBox
+        startStopButton = document.getElementById("startStopButton"); // 取得「收音轉換/停止」這個按鈕控制項
+        langCombo = document.getElementById("langCombo"); // 取得「收音轉換語言」這個選擇控制項
+        if (recognizing) { // 如果正在收音轉換，則停止。
+            recognition.stop();
+        } else { // 否則就開始收音轉換
+            textBox.value = ''; // 清除最終的收音轉換訊息
+            tempBox.value = ''; // 清除中間的收音轉換訊息
+            final_transcript = ''; // 最終的收音轉換訊息變數
+            recognition.lang = langCombo.value; // 設定收音轉換語言
+            recognition.start(); // 開始收音轉換
+        }
+    }
+
+    if (!('webkitSpeechRecognition' in window)) { // 如果找不到 window.webkitSpeechRecognition 這個屬性
+        // 就是不支援語音收音轉換，要求使用者更新瀏覽器。 
+        infoBox.innerText = "本瀏覽器不支援語音收音轉換，請更換瀏覽器！(Chrome 25 版以上才支援語音收音轉換)";
+    } else {
+        var recognition = new webkitSpeechRecognition(); // 建立語音收音轉換物件 webkitSpeechRecognition
+        recognition.continuous = true; // 設定連續收音轉換模式
+        recognition.interimResults = true; // 設定輸出中先結果。
+
+        recognition.onstart = function () { // 開始收音轉換
+            recognizing = true; // 設定為收音轉換中
+            startStopButton.value = "按此停止"; // 收音轉換中...按鈕改為「按此停止」。  
+            infoBox.innerText = "收音轉換中..."; // 顯示訊息為「收音轉換中」...
+        };
+
+        recognition.onend = function () { // 收音轉換完成
+            recognizing = false; // 設定為「非收音轉換中」
+            startStopButton.value = "開始收音轉換"; // 收音轉換完成...按鈕改為「開始收音轉換」。
+            infoBox.innerText = ""; // 不顯示訊息
+        };
+
+        recognition.onresult = function (event) { // 收音轉換有任何結果時
+            var interim_transcript = ''; // 中間結果
+            for (var i = event.resultIndex; i < event.results.length; ++i) { // 對於每一個收音轉換結果
+                if (event.results[i].isFinal) { // 如果是最終結果
+                    final_transcript += event.results[i][0].transcript; // 將其加入最終結果中
+                    final_transcript += '\n'
+                } else { // 否則
+                    interim_transcript += event.results[i][0].transcript; // 將其加入中間結果中
+                }
+            }
+            if (final_transcript.trim().length > 0) // 如果有最終收音轉換文字
+                textBox.value = final_transcript; // 顯示最終收音轉換文字
+            if (interim_transcript.trim().length > 0) // 如果有中間收音轉換文字
+                tempBox.value = interim_transcript; // 顯示中間收音轉換文字
+        };
+    }
+
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+    function ToText() {
+        download("全文檔.txt", final_transcript);
+    }
+</script>
+<div class="container-fluid" allow='microphone;camera;midi;encrypted-media;'>
+    <div class="row">
+        <div class="col">
+            {{>message}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-8 col-12" style="height: 90vh;">
+            <iframe src="https://meet.jit.si/com.org.cycu.{{viewid}}" allow='microphone;camera;midi;encrypted-media;'
+                height="100%" width="100%" title=""></iframe>
+        </div>
+        <div class="col-xl-4 col-12 overflow-auto" style="max-height: 90vh;">
+            <div class="row mt-2">
+                <div class="col">
+                    <h2>語音辨識</h2>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col mt-1">
+                    <input id="tempBox" type="text" class="form-control" size="60" class="p-3" value="" />
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col">
+                    <input id="startStopButton" class="btn btn-block btn-info" type="button" value="收音轉換"
+                        onclick="startButton(event)" />
+                    <button class="btn btn-block btn-primary" onclick="ToText()">下載全文檔</button>
+                    <label class="mt-1" id="infoBox"></label>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <h2>出/列席 模式</h2>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingF">
+                                <h2 class="my-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseF" aria-expanded="true" aria-controls="collapseF">
+                                        進入會議 教學
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseF" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <h4>開會</h4>
+                                    <p>步驟1 : 允許鏡頭與麥克風權限</p>
+                                    <p>步驟2 : 在白框中輸入自己的名稱</p>
+                                    <p>步驟3 : 按下 <span class="badge badge-primary"> Join meeting </span></p>
+                                    <p>步驟4 : 再次 允許麥克風權限</p>
+                                    <h4>語音辨識</h4>
+                                    <p>步驟1 : 按下右上 <span class="badge badge-primary"> 收音轉換 </span></p>
+                                    <p>步驟2 : 允許麥克風權限</p>
+                                    <p>步驟3 : 辨識內容會顯示在白色框框中</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="my-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        語音辨識文檔 下載教學
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="">如果有啟用語音辨識 可下載全文檔</p>
+                                            <div class="alert alert-warning" role="alert">若離開此頁面 則無法再次下載</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>按下底下按鈕下載</p>
+                                            <button class="btn btn-block btn-primary" onclick="ToText()">下載全文檔</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <input id="textBox" type="text" size="60" style="display: none;" value="" />
+        </div>
+    </div>
+</div>
+<select id="langCombo" style="display: none;">
+    <option value="en-US">英文(美國)</option>
+    <option value="cmn-Hant-TW" selected>中文(台灣)</option>
+</select>

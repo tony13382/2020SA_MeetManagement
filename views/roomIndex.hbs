@@ -1,0 +1,102 @@
+<div class="container" style="margin-top: 3%;">
+    <div class="row">
+        <div class="col-12">
+            {{!-- 顯示 flash 訊息 --}}
+            {{> message }}
+        </div>
+        <div class="col-md-5">
+            <label style="font-size: 20px; display: flex; align-items: center">
+                <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8 44V6C8 5.44772 8.44772 5 9 5H29C29.5523 5 30 5.44772 30 6V44" fill="none" />
+                    <path d="M8 44V6C8 5.44772 8.44772 5 9 5H29C29.5523 5 30 5.44772 30 6V44" stroke="#333"
+                        stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M30 15L40 20.9993V44" stroke="#333" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M4 44H44" stroke="#333" stroke-width="4" stroke-linecap="round" />
+                </svg>
+                &nbsp;新空間列表
+            </label>
+        </div>
+        <div class="col-md-7 text-right">
+            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#NewRoomModal">&#10010;
+                建立新空間
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div style="margin-bottom :7%">
+        <div style="font-size: 20px;" class="font-weight-bolder">
+            我管理的空間
+        </div>
+        <div style="text-align: center" class="mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" onclick="sortTable(0)">空間名稱</th>
+                        <th scope="col" onclick="sortTable(1)">地點</th>
+                        <th scope="col" onclick="sortTable(2)">管理人ID</th>
+                        <th scope="col" onclick="sortTable(3)">可容納人數</th>
+                        <th scope="col" onclick="sortTable(4)">價格</th>
+                        <th scope="col">編輯</th>
+                    </tr>
+                </thead>
+                <tbody id="myInfoTable">
+                    {{!-- 遍歷主持的會議陣列 --}}
+                    {{#each confsDataFilter}}
+                    <tr>
+                        <td>{{this.confData.name}}</td>
+                        <td>{{this.confData.location}}</td>
+                        <td>{{this.confData.managerId}}</td>
+                        <td>{{this.confData.accommodate}}</td>
+                        <td>{{this.confData.price}}</td>
+                        <td onclick="roomTableClick('{{this.confData._id}}')">
+                            <img src="/images/edit.png" width="16px" class="edit">
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{#if confsDataFilter}}
+            {{else}}
+            你並未有新空間的管理權
+            {{/if}}
+        </div>
+        <div style="font-size: 20px;" class="font-weight-bolder mt-2">
+            所有空間
+        </div>
+        <div class="form-group mt-3">
+            <label for="exampleInputEmail1">快速搜尋</label>
+            <input type="text" class="form-control" id="myInput" aria-describedby="emailHelp" placeholder="輸入資料進行搜尋">
+        </div>
+        <div style="text-align: center" class="mt-2">
+            <table class="table" id="myTable">
+                <thead>
+                    <tr>
+                        <th scope="col" onclick="sortTable(0)">空間名稱</th>
+                        <th scope="col" onclick="sortTable(1)">地點</th>
+                        <th scope="col" onclick="sortTable(2)">管理人ID</th>
+                        <th scope="col" onclick="sortTable(3)">可容納人數</th>
+                        <th scope="col" onclick="sortTable(4)">價格</th>
+                    </tr>
+                </thead>
+                <tbody id="myInfoTable">
+                    {{!-- 遍歷主持的會議陣列 --}}
+                    {{#each confsData}}
+                    <tr>
+                        <td>{{this.confData.name}}</td>
+                        <td>{{this.confData.location}}</td>
+                        <td>{{this.confData.managerId}}</td>
+                        <td>{{this.confData.accommodate}}</td>
+                        <td>{{this.confData.price}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{>otherModal}}

@@ -1,0 +1,96 @@
+<div class="container" style="margin-top: 3%;">
+    <div class="row">
+        <div class="col">
+            <label style="font-size: 20px; display: flex; align-items: center">
+                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 20C22.866 20 26 16.866 26 13C26 9.13401 22.866 6 19 6C15.134 6 12 9.13401 12 13C12 16.866 15.134 20 19 20Z" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 16L38 22L44 16" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 40.8V42H34V40.8C34 36.3196 34 34.0794 33.1281 32.3681C32.3611 30.8628 31.1372 29.6389 29.6319 28.8719C27.9206 28 25.6804 28 21.2 28H16.8C12.3196 28 10.0794 28 8.36808 28.8719C6.86278 29.6389 5.63893 30.8628 4.87195 32.3681C4 34.0794 4 36.3196 4 40.8Z" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                &nbsp;主持人簽核
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div style="text-align: center" class="mt-2">
+                <table class="table conf-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">會議名稱</th>
+                            <th scope="col">開始時間</th>
+                            <th scope="col">結束時間</th>
+                            <th scope="col">地點</th>
+                            <th scope="col">主持人審核</th>
+                            <th scope="col">場地審核</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{!-- 遍歷待主持人簽核的會議陣列 --}}
+                        {{#each chairConfs}}
+                        <tr onclick="tableClick('{{this.confInfo._id}}')">
+                            <td>{{this.confInfo.name}}</td>
+                            <td>{{this.confInfo.startTime}}</td>
+                            <td>{{this.confInfo.endTime}}</td>
+                            <td>{{this.roomInfo.name}}</td>
+                            <td>{{{getSign this.isSign}}}</td>
+                            <td>{{{getSign this.confInfo.isRoomSign}}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+                {{!-- 判斷有無待簽核會議 --}}
+                {{#if chairConfs}}
+                {{else}}
+                {{!-- 沒有會議 --}}
+                目前沒有待簽核會議
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 3%;">
+    <div class="row">
+        <div class="col">
+            <label style="font-size: 20px; display: flex; align-items: center">
+                <?xml version="1.0" encoding="UTF-8"?><svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" fill="white" fill-opacity="0.01"/><path d="M42 18V39C42 40.6569 40.6569 42 39 42H9C7.34315 42 6 40.6569 6 39V9C6 7.34315 7.34315 6 9 6H32" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 20L24 28L42 6" stroke="#333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                &nbsp;場地簽核
+            </label>
+        </div>
+    </div>
+
+    <div style="margin-bottom :7%">
+        <div style="text-align: center">
+            <table class="table conf-table">
+                <thead>
+                    <tr>
+                        <th scope="col">會議名稱</th>
+                        <th scope="col">開始時間</th>
+                        <th scope="col">結束時間</th>
+                        <th scope="col">地點</th>
+                        <th scope="col">主持人審核</th>
+                        <th scope="col">場地審核</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{!-- 遍歷待空間負責人簽核的會議陣列 --}}
+                    {{#each roomConfs}}
+                    <tr onclick="tableClick('{{this.confInfo._id}}')">
+                        <td>{{this.confInfo.name}}</td>
+                        <td>{{this.confInfo.startTime}}</td>
+                        <td>{{this.confInfo.endTime}}</td>
+                        <td>{{this.roomInfo.name}}</td>
+                        <td>{{{getSign this.confInfo.isChairSign}}}</td>
+                        <td>{{{getSign this.confInfo.isRoomSign}}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{!-- 判斷有無待簽核會議 --}}
+            {{#if roomConfs}}
+            {{else}}
+            {{!-- 沒有會議 --}}
+            目前沒有待審核會議
+            {{/if}}
+        </div>
+    </div>
+</div>

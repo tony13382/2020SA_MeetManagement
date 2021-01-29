@@ -1,0 +1,49 @@
+body {
+    background: #ffffff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header-title {
+    transition-duration: 0.4s;
+}
+
+#sidebar {
+    float: left;
+}
+
+#sidebar a {
+    text-decoration: none;
+}
+
+#sidebar a:hover {
+    background: #c5c4c4;
+    color: #000000;
+    transition-duration: 0.4s;
+}
+
+table tbody tr:hover {
+    background: #ecebeb;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.per-active{
+    color: #BD2716;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.th-item:hover {
+    color: #17a2b8;
+}

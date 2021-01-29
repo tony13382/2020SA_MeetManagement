@@ -1,0 +1,65 @@
+<div class="container" style="margin-top: 3%;">
+    <div class="row">
+        <div class="col">
+            <h3>修改新空間</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{!-- 顯示 flash 訊息 --}}
+            {{> message }}
+        </div>
+    </div>
+</div>
+<div class="container">
+    {{#each confsData}}
+    <div class="row">
+        <form class="col-12" method="POST">
+            <div class="row mt-1">
+                <div class="col-sm">
+                    <label for="meetingname">名稱：</label>
+                    <input type="text" class="form-control" id="meetingname" name="name"
+                        value="{{this.confData.name}}" required>
+                </div>
+                <div class="col-sm">
+                    <label for="meetingname">地點：</label>
+                    <input type="text" class="form-control" id="meetingname" name="location"
+                        value="{{this.confData.location}}" required>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm">
+                    <label for="meetingname">管理人ID：</label>
+                    <input class="form-control" value="{{this.confData.managerId}}" list="staffList" name="managerId" size="10" required>
+                    <datalist id="staffList">
+                        {{!-- 遍歷使用者陣列 --}}
+                        {{#each users}}
+                        <option value="{{this.staffId}}">{{this.name}}</option>
+                        {{/each}}
+                    </datalist>
+                </div>
+                <div class="col-sm">
+                    <label for="meetingname">可容納人數：</label>
+                    <input type="number" min="0" class="form-control" id="meetingname" name="accommodate"
+                        value="{{this.confData.accommodate}}" required>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-sm">
+                    <label for="meetingname">價格：</label>
+                    <input type="number" class="form-control" min="0" id="meetingname" name="price"
+                        value="{{this.confData.price}}" required>
+                </div>
+                <div class="col-sm text-center">
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 text-right">
+                    <input type="submit" class="btn btn-primary" value="完成編輯">
+                    <!--<a href="/deleteRoom?id={{this.confData._id}}" class="btn btn-secondary">刪除</a>-->
+                </div>
+            </div>
+        </form>
+    </div>
+    {{/each}}
+</div>

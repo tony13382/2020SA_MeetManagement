@@ -1,0 +1,138 @@
+[
+    {
+        "staffId": "09912002",
+        "name": "王大",
+        "position": "人事部經理",
+        "email": "wangone@walsincloud.com.xx",
+        "isUserEditor": "1",
+        "password": "wangone"
+    },
+    {
+        "staffId": "10611001",
+        "name": "王二",
+        "position": "會計部主任",
+        "email": "wangtwo@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "wangtwo"
+    },
+    {
+        "staffId": "10312023",
+        "name": "王三",
+        "position": "人事部主任",
+        "email": "wangthree@walsincloud.com.xx",
+        "isUserEditor": "1",
+        "password": "wangthree"
+    },
+    {
+        "staffId": "10615099",
+        "name": "張九九",
+        "position": "業務部部員",
+        "email": "zhangnine@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "zhangnine"
+    },
+    {
+        "staffId": "10413007",
+        "name": "陳七七",
+        "position": "財務部主管",
+        "email": "chenseven@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "chenseven"
+    },
+    {
+        "staffId": "10413001",
+        "name": "陳乙己",
+        "position": "財務部經理",
+        "isUserEditor": "0",
+        "email": "chenyiji@walsincloud.com.xx",
+        "password": "chenyiji"
+    },
+    {
+        "staffId": "10413002",
+        "name": "陳丙己",
+        "position": "財務部部員",
+        "email": "chenbingji@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "chenbingji"
+    },
+    {
+        "staffId": "10516006",
+        "name": "林六六",
+        "position": "資訊部部員",
+        "email": "linsix@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "linsix"
+    },
+    {
+        "staffId": "10616049",
+        "name": "林戚戚",
+        "position": "資訊部部員",
+        "email": "lingseven@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "lingseven"
+    },
+    {
+        "staffId": "10616033",
+        "name": "林三三",
+        "position": "資訊部經理",
+        "email": "lingthree@walsincloud.com.xx",
+        "isUserEditor": "0",
+        "password": "lingthree"
+    },
+    {
+        "staffId": "001",
+        "name": "Landy",
+        "position": "人事部主任",
+        "email": "lv@aa.bb",
+        "isUserEditor": "1",
+        "password": "001"
+    },
+    {
+        "staffId": "002",
+        "name": "Mandy",
+        "position": "資訊部主任",
+        "email": "mv@aa.bb",
+        "isUserEditor": "0",
+        "password": "002"
+    },
+    {
+        "staffId": "003",
+        "name": "Pandy",
+        "position": "行銷部主任",
+        "email": "pv@aa.bb",
+        "isUserEditor": "0",
+        "password": "003"
+    },
+    {
+        "staffId": "004",
+        "name": "Handy",
+        "position": "人事部主任",
+        "email": "hv@aa.bb",
+        "isUserEditor": "1",
+        "password": "004"
+    },
+    {
+        "staffId": "005",
+        "name": "Vandy",
+        "position": "人事部主任",
+        "email": "vv@aa.bb",
+        "isUserEditor": "1",
+        "password": "005"
+    },
+    {
+        "staffId": "10744220",
+        "name": "ML",
+        "position": "資訊部主管",
+        "email": "ttsmcpe@gmail.com",
+        "isUserEditor": "1",
+        "password": "10744220"
+    },
+    {
+        "staffId": "10744221",
+        "name": "Vandy",
+        "position": "人事部主任",
+        "email": "tony13382@cycu.org.tw",
+        "isUserEditor": "1",
+        "password": "10744221"
+    }
+]

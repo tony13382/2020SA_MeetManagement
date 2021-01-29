@@ -1,0 +1,57 @@
+[{
+        "name": "第一會議室",
+        "location": "臺北市信義區松智路1號25樓011室",
+        "accommodate": 50,
+        "managerId": "10611001",
+        "price": 500
+    },
+    {
+        "name": "第二會議室",
+        "location": "臺北市信義區松智路1號25樓022室",
+        "accommodate": 30,
+        "managerId": "10413002",
+        "price": 300
+    },
+    {
+        "name": "第三會議室",
+        "location": "臺北市信義區松智路1號25樓033室",
+        "accommodate": 35,
+        "managerId": "10616033",
+        "price": 350
+    },
+    {
+        "name": "第四會議室",
+        "location": "臺北市信義區松智路1號25樓044室",
+        "accommodate": 40,
+        "managerId": "10616049",
+        "price": 400
+    },
+    {
+        "name": "第五會議室",
+        "location": "臺北市信義區松智路1號25樓055室",
+        "accommodate": 55,
+        "managerId": "10616049",
+        "price": 550
+    },
+    {
+        "name": "R001",
+        "location": "桃園市中壢區中北路200號5樓Afab",
+        "accommodate": 55,
+        "managerId": "003",
+        "price": 550
+    },
+    {
+        "name": "R002",
+        "location": "桃園市中壢區中北路200號5樓Afab",
+        "accommodate": 55,
+        "managerId": "001",
+        "price": 550
+    },
+    {
+        "name": "R003",
+        "location": "桃園市中壢區中北路200號5樓Bfab",
+        "accommodate": 55,
+        "managerId": "002",
+        "price": 550
+    }
+]
