@@ -118,21 +118,5 @@
         "email": "vv@aa.bb",
         "isUserEditor": "1",
         "password": "005"
-    },
-    {
-        "staffId": "10744220",
-        "name": "ML",
-        "position": "資訊部主管",
-        "email": "ttsmcpe@gmail.com",
-        "isUserEditor": "1",
-        "password": "10744220"
-    },
-    {
-        "staffId": "10744221",
-        "name": "Vandy",
-        "position": "人事部主任",
-        "email": "tony13382@cycu.org.tw",
-        "isUserEditor": "1",
-        "password": "10744221"
     }
 ]
